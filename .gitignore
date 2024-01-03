@@ -1,0 +1,6 @@
+# VS Code Properties
+.vscode\
+
+# C++ Properties
+src\*.obj
+bin\*.exe
