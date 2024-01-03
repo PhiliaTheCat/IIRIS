@@ -5,7 +5,7 @@ namespace ptc
     Pic::Pic(const unsigned &__height, const unsigned &__width) noexcept(false)
     : height(__height), width(__width)
     {
-        mat = new unsigned char [256 * 256] {};
+        mat = new uint8_t [256 * 256] {};
         if (mat == nullptr)
             throw "Allocation failed!";
     }
@@ -13,7 +13,7 @@ namespace ptc
     Pic::Pic(const Pic &src) noexcept(false)
     : height(src.height), width(src.width)
     {
-        mat = new unsigned char [256 * 256];
+        mat = new uint8_t [256 * 256];
         if (mat == nullptr)
             throw "Allocation failed!";
         for (int i = 0; i < 256 * 256; i += 1)
@@ -50,23 +50,25 @@ namespace ptc
         return *this;
     }
 
-    unsigned Pic::get_height() const
+    uint32_t Pic::get_height() const
     {
         return height;
     }
 
-    unsigned Pic::get_width() const
+    uint32_t Pic::get_width() const
     {
         return width;
     }
 
-    unsigned char *Pic::get_mat() const
+    uint8_t *Pic::get_mat() const
     {
         return mat;
     }
 
-    unsigned char *Pic::operator [](const unsigned &x) const
+    uint8_t *Pic::operator [](const uint32_t &x) const noexcept(false)
     {
+        if (x / width >= height)
+            throw "Invalid row index!";
         return &mat[x - x % width];
     }
 }

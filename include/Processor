@@ -1,6 +1,14 @@
 #ifndef __INCLUDED_PROCESSOR__
 #define __INCLUDED_PROCESSOR__
 
+#include <cstdint>
+#include <bitset>
 
+#include "Pic"
+
+namespace ptc
+{
+
+}
 
 #endif

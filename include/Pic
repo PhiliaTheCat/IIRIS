@@ -1,18 +1,20 @@
 #ifndef __INCLUDED_PIC__
 #define __INCLUDED_PIC__
 
+#include <cstdint>
+
 namespace ptc
 {
     class Pic
     {
         private:
-        unsigned height;
-        unsigned width;
+        uint32_t height;
+        uint32_t width;
 
-        unsigned char *mat;
+        uint8_t *mat;
 
         public:
-        Pic(const unsigned &__height = 0, const unsigned &__width = 0) noexcept(false);
+        Pic(const uint32_t &__height = 0, const uint32_t &__width = 0) noexcept(false);
         Pic(const Pic &src) noexcept(false);
         Pic(Pic &&src);
 
@@ -21,12 +23,12 @@ namespace ptc
         Pic &operator =(const Pic &rhs);
         Pic &operator =(Pic &&rhs);
 
-        inline unsigned get_height() const;
-        inline unsigned get_width() const;
+        inline uint32_t get_height() const;
+        inline uint32_t get_width() const;
 
-        inline unsigned char *get_mat() const;
+        inline uint8_t *get_mat() const;
 
-        inline unsigned char *operator [](const unsigned &x) const;
+        inline uint8_t *operator [](const uint32_t &x) const noexcept(false);
     };
 }
 

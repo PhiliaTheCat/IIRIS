@@ -1,11 +1,11 @@
 #ifndef __INCLUDED_PNG_INTERFACE__
 #define __INCLUDED_PNG_INTERFACE__
 
+#include "Pic"
+
 namespace ptc
 {
-    class Pic;
-
-    Pic &Read_from_PNG(const char file_name[]) noexcept(false));
+    Pic &Read_from_PNG(const char file_name[]) noexcept(false);
 }
 
 #endif

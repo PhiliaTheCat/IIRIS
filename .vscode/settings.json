@@ -61,6 +61,7 @@
         "xutility": "cpp",
         "png_interface": "cpp",
         "fstream": "cpp",
-        "pic": "cpp"
+        "pic": "cpp",
+        "processor": "cpp"
     }
 }

@@ -1,7 +1,6 @@
 #include <cstdint>
 
 #include "..\include\png.h"
-#include "..\include\Pic"
 #include "..\include\PNG_Interface"
 
 namespace ptc
