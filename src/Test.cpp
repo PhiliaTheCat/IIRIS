@@ -7,5 +7,6 @@ using namespace ptc;
 
 int main()
 {
-    
+    uint8_t a;
+    cout << a;
 }
