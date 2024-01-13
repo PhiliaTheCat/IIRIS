@@ -1,30 +1,38 @@
 cc = cl
 lk = link
+rm = del
 
-ccflags = /c /nologo /EHa /std:c++14 /MD /O2 /W3 /D_CRT_SECURE_NO_WARNINGS /D_CRT_SECURE_NO_DEPRECATE
-lkflags = /nologo
+ccflags = /nologo /MD /c /GL /O2 /W3 /D_CRT_SECURE_NO_WARNINGS /D_CRT_SECURE_NO_DEPRECATE
+lkflags = /nologo /LTCG
 
-zlib = lib\zlib.lib
-libpng = lib\libpng.lib
-demo = bin\Demo.exe
-test = bin\Test.exe
+zlib = lib/zlib.lib
+libpng = lib/libpng.lib
+lib = $(libpng) $(zlib)
+demo = bin/Demo.exe
+test = bin/Test.exe
 
-all: clean
+$(test): src/Test.obj src/PNG_Interface.obj src/Pic.obj $(lib)
+	$(lk) $(lkflags) /out:$@ src/Test.obj src/PNG_Interface.obj src/Pic.obj $(lib) 
 
-test: $(test)
+src/Test.obj: src/Test.cpp
+	$(cc) $(ccflags) /Fo$@ src/Test.cpp 
 
-$(test): src\Test.obj src\PNG_Interface.obj $(libpng) $(zlib)
-	$(lk) $(lkflags) src\Test.obj src\PNG_Interface.obj $(libpng) $(zlib) /out:$(test)
+src/PNG_Interface.obj: src/PNG_Interface.cpp
+	$(cc) $(ccflags) /Fo$@ src/PNG_Interface.cpp 
 
-src\Test.obj: src\Test.cpp
-	$(cc) $(ccflags) src\Test.cpp /Fosrc\Test.obj
+src/Pic.obj: src/Pic.cpp
+	$(cc) $(ccflags) /Fo$@ src/Pic.cpp 
 
-src\PNG_Interface.obj: src\PNG_Interface.cpp
-	$(cc) $(ccflags) src\PNG_Interface.cpp /Fosrc\PNG_Interface.obj
-
-src\Pic.obj: src\Pic.cpp
-	$(cc) $(ccflags) src\Pic.cpp /Fosrc\Pic.obj
+.phony: clean all test
 
 clean:
-	del src\*.obj
-	del bin\*.exe
+	cd src
+	$(rm) *.obj
+	cd ../bin
+	$(rm) *.exe
+	cd ../
+
+all: clean $(demo)
+
+test: clean $(test)
+	$(test)

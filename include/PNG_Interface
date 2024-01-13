@@ -5,7 +5,8 @@
 
 namespace ptc
 {
-    Pic &Read_from_PNG(const char file_name[]) noexcept(false);
+    Pic Read_from_PNG(const char file_name[]) noexcept(false);
+    void Write_into_PNG(const Pic &src, const char file_name[]) noexcept(false);
 }
 
 #endif

@@ -1,6 +1,6 @@
 #include <cmath>
 
-#include "..\include\Processor"
+#include "../include/Processor"
 
 namespace ptc
 {
