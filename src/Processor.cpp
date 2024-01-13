@@ -4,13 +4,12 @@
 
 namespace ptc
 {
-    Pic &Generate_Sealed_Image(const Pic &src, const std::bitset<1024> &msg, const double &s)
+    Pic Generate_Sealed_Image(const Pic &src, const std::bitset<1024> &msg, const double &s)
     {
         Pic &res = Pic(src.get_height(), src.get_width());
-
     }
 
-    Pic &Compress(const Pic &src, const double &s)
+    Pic Compress(const Pic &src, const double &s)
     {
         uint32_t nh = round(src.get_height() * s);
         uint32_t nw = round(src.get_width() * s);
@@ -36,6 +35,8 @@ namespace ptc
 
     unsigned char Calculate(const uint8_t &a, const uint8_t &b, const uint8_t &c, const uint8_t &d, const double &x, const double &y)
     {
-        
+        double x1 = a * y + b * (1 - y);
+        double x2 = c * y + d * (1 - y);
+        return round(x1 * x + x2 * (1 - x));
     }
 }

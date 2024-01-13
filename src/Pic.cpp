@@ -25,6 +25,8 @@ namespace ptc
     {
         height = rhs.height;
         width = rhs.width;
+        if (mat != nullptr)
+            delete [] mat;
         mat = rhs.mat;
         rhs.mat = nullptr;
         return *this;

@@ -31,7 +31,7 @@ namespace ptc
     void Write_into_PNG(const Pic &src, const char file_name[]) noexcept(false)
     {
         png_image pic;
-        std::memset(&pic, 0, sizeof(pic));
+        std::memset(&pic, 0, sizeof(png_image));
         pic.version = PNG_IMAGE_VERSION;
         pic.opaque = nullptr;
         pic.height = src.get_height();

@@ -5,7 +5,7 @@ RM = del
 CPPFLAGS = /nologo /EHa /c /GL /MD /O2 /W3 /D_CRT_SECURE_NO_DEPRECATE /D_CRT_SECURE_NO_WARNINGS
 LKFLAGS = /nologo /ltcg
 
-ESSENCE = src\PNG_Interface.obj src\Pic.obj lib\libPNG.lib lib\zlib.lib
+ESSENCE = src\PNG_Interface.obj src\Processor.obj src\Pic.obj lib\libPNG.lib lib\zlib.lib
 
 bin\Test.exe: src\Test.obj $(ESSENCE)
 	$(LK) $(LKFLAGS) /out:$@ src\Test.obj $(ESSENCE)
@@ -18,6 +18,9 @@ src\Pic.obj: src\Pic.cpp
 
 src\Test.obj: src\Test.cpp
 	$(CPP) $(CPPFLAGS) /Fo$@ src\Test.cpp
+
+src\Processor.obj: src\Processor.cpp
+	$(CPP) $(CPPFLAGS) /Fo$@ src\Processor.cpp
 
 .PHONY: clean test
 

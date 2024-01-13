@@ -56,9 +56,9 @@ namespace ptc
 
         inline uint8_t *operator [](const uint32_t &x) const noexcept(false)
         {
-            if (x / width >= height)
+            if (x >= height)
                 throw "Invalid row index!";
-            return &mat[x - x % width];
+            return &mat[x * width];
         }
     };
 }
